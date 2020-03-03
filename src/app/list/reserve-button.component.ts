@@ -5,9 +5,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './reserve-button.component.html'
 })
 export class ReserveButtonComponent {
-  @Output() click = new EventEmitter<void>();
+  @Output() reserve = new EventEmitter<void>();
 
   handleClick() {
-    this.click.emit();
+    this.reserve.emit();
   }
 }
