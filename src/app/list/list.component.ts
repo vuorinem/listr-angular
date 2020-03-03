@@ -8,10 +8,14 @@ const TestItems = [
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html'
+  templateUrl: './list.component.html',
 })
 export class ListComponent {
   @Input() name = '';
 
   items = TestItems;
+
+  handleReserve(item: string) {
+    alert(`Reserved '${item}'`);
+  }
 }

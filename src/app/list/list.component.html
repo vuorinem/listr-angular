@@ -1,4 +1,7 @@
 <div class="listr-list">
   <h1>{{ name }}</h1>
-  <app-item *ngFor="let item of items" [label]="item"></app-item>
+  <app-item
+    *ngFor="let item of items"
+    [label]="item"
+    (reserve)="handleReserve($event)"></app-item>
 </div>
