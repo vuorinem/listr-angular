@@ -1,21 +1,20 @@
-import { Component, Input } from '@angular/core';
-
-const TestItems = [
-  'First item',
-  'Second item',
-  'Third item',
-];
+import { ListData, getList, ItemData } from './list-api';
+import { Component, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
 })
-export class ListComponent {
+export class ListComponent implements OnChanges {
   @Input() name = '';
 
-  items = TestItems;
+  list: ListData;
 
-  handleReserve(item: string) {
-    alert(`Reserved '${item}'`);
+  async ngOnChanges() {
+    this.list = await getList(this.name);
+  }
+
+  handleReserve(item: ItemData) {
+    alert(`Reserved '${item.label}'`);
   }
 }

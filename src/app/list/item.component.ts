@@ -1,3 +1,4 @@
+import { ItemData } from './list-api';
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -5,11 +6,11 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
   templateUrl: './item.component.html'
 })
 export class ItemComponent {
-  @Input() label = '';
+  @Input() item!: ItemData;
 
-  @Output() reserve = new EventEmitter<string>();
+  @Output() reserve = new EventEmitter<ItemData>();
 
   handleReserve() {
-    this.reserve.emit(this.label);
+    this.reserve.emit(this.item);
   }
 }
