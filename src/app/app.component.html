@@ -1,1 +1,4 @@
-<app-list name="My List"></app-list>
+<div>
+  <input [(ngModel)]="listName" />
+  <app-list [name]="listName"></app-list>
+</div>
