@@ -17,4 +17,8 @@ export class ListComponent implements OnChanges {
   handleReserve(item: ItemData) {
     alert(`Reserved '${item.label}'`);
   }
+
+  handleCancel(item: ItemData) {
+    alert(`Cancelled '${item.label}'`);
+  }
 }

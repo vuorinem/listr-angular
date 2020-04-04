@@ -9,8 +9,13 @@ export class ItemComponent {
   @Input() item!: ItemData;
 
   @Output() reserve = new EventEmitter<ItemData>();
+  @Output() cancel = new EventEmitter<ItemData>();
 
   handleReserve() {
     this.reserve.emit(this.item);
+  }
+
+  handleCancel() {
+    this.cancel.emit(this.item);
   }
 }

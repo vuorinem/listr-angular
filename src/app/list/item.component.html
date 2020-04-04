@@ -1,4 +1,6 @@
 <div class="listr-item">
   <span class="listr-item-label">{{ item.label }}</span>
+  <span className="listr-item-count">({{ item.reservedCount}}/{{ item.count }})</span>
   <app-reserve-button (reserve)="handleReserve()"></app-reserve-button>
+  <app-cancel-button (cancel)="handleCancel()"></app-cancel-button>
 </div>

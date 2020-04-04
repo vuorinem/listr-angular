@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './list/item.component';
 import { ReserveButtonComponent } from './list/reserve-button.component';
+import { CancelButtonComponent } from './list/cancel-button.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReserveButtonComponent } from './list/reserve-button.component';
     ListComponent,
     ItemComponent,
     ReserveButtonComponent,
+    CancelButtonComponent,
   ],
   imports: [
     BrowserModule,

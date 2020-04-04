@@ -4,6 +4,7 @@
     <app-item
       *ngFor="let item of list.items"
       [item]="item"
-      (reserve)="handleReserve($event)"></app-item>
+      (reserve)="handleReserve($event)"
+      (cancel)="handleCancel($event)"></app-item>
   </div>
 </div>
