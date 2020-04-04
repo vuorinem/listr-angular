@@ -35,19 +35,19 @@ export class ListComponent implements OnChanges {
     this.list = await getList(this.name);
   }
 
-  handleReserve(item: ItemData) {
+  async handleReserve(item: ItemData) {
     if (!this.list) {
       return;
     }
 
-    reserve(this.list.name, item.label);
+    await reserve(this.list.name, item.label);
   }
 
-  handleCancel(item: ItemData) {
+  async handleCancel(item: ItemData) {
     if (!this.list) {
       return;
     }
 
-    cancel(this.list.name, item.label);
+    await cancel(this.list.name, item.label);
   }
 }
