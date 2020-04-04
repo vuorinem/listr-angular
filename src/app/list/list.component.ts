@@ -1,5 +1,5 @@
-import { ListData, getList, ItemData } from './list-api';
-import { Component, Input, OnChanges } from '@angular/core';
+import { ListData, getList, ItemData, reserve, cancel, subscribe, Unsubscribe } from './list-api';
+import { Component, Input, OnChanges, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-list',
@@ -9,16 +9,45 @@ export class ListComponent implements OnChanges {
   @Input() name = '';
 
   list: ListData;
+  unsubscribe: Unsubscribe | null = null;
+
+  constructor(private ngZone: NgZone) {}
 
   async ngOnChanges() {
+    await this.initList();
+  }
+
+  async initList() {
+    await this.loadList();
+
+    if (this.unsubscribe !== null) {
+      this.unsubscribe();
+    }
+
+    this.unsubscribe = subscribe(this.name, async () => {
+      this.ngZone.run(async () => {
+        await this.loadList();
+      });
+    });
+  }
+
+  async loadList() {
     this.list = await getList(this.name);
   }
 
   handleReserve(item: ItemData) {
-    alert(`Reserved '${item.label}'`);
+    if (!this.list) {
+      return;
+    }
+
+    reserve(this.list.name, item.label);
   }
 
   handleCancel(item: ItemData) {
-    alert(`Cancelled '${item.label}'`);
+    if (!this.list) {
+      return;
+    }
+
+    cancel(this.list.name, item.label);
   }
 }
